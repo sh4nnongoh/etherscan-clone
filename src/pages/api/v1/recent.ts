@@ -12,7 +12,7 @@ const provider = process.env.INFURA_ENDPOINT || "";
 const web3Provider = new Web3.providers.HttpProvider(provider);
 const web3 = new Web3(web3Provider);
 const prisma = new PrismaClient();
-type Data = {
+export type RecentData = {
   blocks: BlockTransactionString[]
   transactions: Transaction[]
   dailyTransactionCount: number[]
@@ -24,7 +24,7 @@ type Error = {
 }
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data | Error>
+  res: NextApiResponse<RecentData | Error>
 ) {
   try {
     const blocks = await getBlocksFromDb(prisma, getDaysAgoTimestampInSeconds(7));

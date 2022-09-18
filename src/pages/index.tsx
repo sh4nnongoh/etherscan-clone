@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-const Home: NextPage = () => (
+import { RecentData } from "./api/v1/recent";
+const Home: NextPage<RecentData> = () => (
   <div className={styles.container}>
     <Head>
       <title>Etherscan Clone - Search & View Recent Transactions</title>
@@ -19,4 +20,12 @@ const Home: NextPage = () => (
     </main>
   </div>
 );
+export const getStaticProps = async () => {
+  const result = await fetch(`${process.env.PRODUCTION_URL}/api/v1/recent`);
+  const recentData = await result.json();
+  return {
+    props: recentData,
+    revalidate: 10
+  };
+};
 export default Home;
