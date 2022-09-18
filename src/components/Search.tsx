@@ -2,6 +2,7 @@ import {
   ChangeEvent, FC, FormEvent, useState
 } from "react";
 import { useRouter } from "next/router";
+import { ETHEREUM_BLOCK_NUMBER_REGEX, ETHEREUM_HASH_REGEX } from "../constants";
 const Search: FC = () => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
@@ -11,7 +12,12 @@ const Search: FC = () => {
   };
   const handleSubmit = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await router.push(`/block/${searchValue}`);
+    if (ETHEREUM_HASH_REGEX.test(searchValue)) {
+      await router.push(`/transaction/${searchValue}`);
+    }
+    if (ETHEREUM_BLOCK_NUMBER_REGEX.test(searchValue)) {
+      await router.push(`/block/${searchValue}`);
+    }
   };
   return (
     <div className="flex w-80 relative">
