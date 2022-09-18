@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
+import getDaysAgoTimestampInSeconds from "../../../utils/getDaysAgoTimestampInSeconds";
 const prisma = new PrismaClient();
 type Error = {
   error: unknown
@@ -13,12 +14,7 @@ export default function handler(
     res.status(500).json({ error: "error" });
     return Promise.resolve(false);
   }
-  const today = new Date();
-  const sevenDaysAgoTimestampInSeconds = (
-    new Date(
-      (new Date()).setDate(today.getDate() - 7)
-    )
-  ).setHours(0, 0, 0, 0) / 1000;
+  const sevenDaysAgoTimestampInSeconds = getDaysAgoTimestampInSeconds(7);
   let blocksToDelete = 0;
   return prisma.block.count({
     where: {
