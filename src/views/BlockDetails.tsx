@@ -2,13 +2,14 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 import type { BlockTransactionString } from "web3-eth";
 import BlockDetailsTable from "../components/BlockDetailsTable";
+import Card from "../components/Card";
 import useBlockDetails from "../hooks/useBlockDetails";
 const BlockDetails: FC<{block: BlockTransactionString | null}> = ({ block }) => {
   const router = useRouter();
   const blockNumber = block?.number || Number(router.query.blockNumber);
   const blockDetails = useBlockDetails({ blockNumber });
   return (
-    <div>
+    <div className="m-10">
       <h1>Block</h1>
       <div className="inline-flex border-b border-gray-200 dark:border-gray-700">
         <button
@@ -19,7 +20,11 @@ const BlockDetails: FC<{block: BlockTransactionString | null}> = ({ block }) => 
           Overview
         </button>
       </div>
-      {blockDetails && <BlockDetailsTable block={blockDetails} />}
+      {blockDetails && (
+      <Card>
+        <BlockDetailsTable block={blockDetails} />
+      </Card>
+      )}
     </div>
   );
 };

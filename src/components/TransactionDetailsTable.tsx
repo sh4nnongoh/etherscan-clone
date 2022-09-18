@@ -16,19 +16,21 @@ const TransactionDetailsTable: FC<{transaction: Transaction}> = ({ transaction }
     // input
   } = transaction;
   return (
-    <table>
-      <tbody>
-        <TransactionDetailsTableRow row={["Transaction Hash:", `${hash}`]} />
-        <TransactionDetailsTableRow row={["Status:", "Success"]} />
-        <TransactionDetailsTableRow row={["Block:", `${blockNumber}`]} />
-        {/* <TransactionDetailsTableRow row={["Timestamp:", `${timestamp}`]} /> */}
-        <TransactionDetailsTableRow row={["From:", `${from}`]} />
-        <TransactionDetailsTableRow row={["Interacted With (To):", `${to}`]} />
-        <TransactionDetailsTableRow row={["Value:", `${value}`]} />
-        <TransactionDetailsTableRow row={["Gas Price:", `${gasPrice}`]} />
-        {/* <TransactionDetailsTableRow row={["Gas Limit:", `${gasLimit}`]} /> */}
-      </tbody>
-    </table>
+    <div className="w-full p-8">
+      <table className="table-auto border w-full">
+        <tbody>
+          <TransactionDetailsTableRow row={["Transaction Hash:", `${hash}`]} />
+          <TransactionDetailsTableRow row={["Status:", "Success"]} />
+          <TransactionDetailsTableRow row={["Block:", `${blockNumber}`]} />
+          {/* <TransactionDetailsTableRow row={["Timestamp:", `${timestamp}`]} /> */}
+          <TransactionDetailsTableRow row={["From:", `${from}`]} />
+          <TransactionDetailsTableRow row={["Interacted With (To):", `${to}`]} />
+          <TransactionDetailsTableRow row={["Value:", `${value}`]} />
+          <TransactionDetailsTableRow row={["Gas Price:", `${gasPrice}`]} />
+          {/* <TransactionDetailsTableRow row={["Gas Limit:", `${gasLimit}`]} /> */}
+        </tbody>
+      </table>
+    </div>
   );
 };
 export default TransactionDetailsTable;

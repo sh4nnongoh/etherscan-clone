@@ -8,7 +8,7 @@ const TransactionDetails: FC<{transaction: Transaction | null}> = ({ transaction
   const hash = transaction?.hash || router.query.transactionHash as string;
   const transactionDetails = useTransactionDetails({ hash });
   return (
-    <div>
+    <div className="m-10">
       <h1>Transaction Details</h1>
       <div className="inline-flex border-b border-gray-200 dark:border-gray-700">
         <button

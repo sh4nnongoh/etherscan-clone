@@ -24,18 +24,20 @@ const BlockDetailsTable: FC<{block: BlockTransactionString}> = ({ block }) => {
     timestamp
   } = block;
   return (
-    <table>
-      <tbody>
-        <BlockDetailsTableRow row={["Block Height:", `${number}`]} />
-        <BlockDetailsTableRow row={["Status:", "Finalized"]} />
-        <BlockDetailsTableRow row={["Timestamp:", `${timestamp}`]} />
-        <BlockDetailsTableRow row={["Transactions:", `${transactions.length}`]} />
-        <BlockDetailsTableRow row={["Total Difficulty:", `${totalDifficulty}`]} />
-        <BlockDetailsTableRow row={["Size:", `${size}`]} />
-        <BlockDetailsTableRow row={["Gas Used:", `${gasUsed}`]} />
-        <BlockDetailsTableRow row={["Gas Limit:", `${gasLimit}`]} />
-      </tbody>
-    </table>
+    <div className="w-full p-8">
+      <table className="table-auto border w-full">
+        <tbody>
+          <BlockDetailsTableRow row={["Block Height:", `${number}`]} />
+          <BlockDetailsTableRow row={["Status:", "Finalized"]} />
+          <BlockDetailsTableRow row={["Timestamp:", `${timestamp}`]} />
+          <BlockDetailsTableRow row={["Transactions:", `${transactions.length}`]} />
+          <BlockDetailsTableRow row={["Total Difficulty:", `${totalDifficulty}`]} />
+          <BlockDetailsTableRow row={["Size:", `${size}`]} />
+          <BlockDetailsTableRow row={["Gas Used:", `${gasUsed}`]} />
+          <BlockDetailsTableRow row={["Gas Limit:", `${gasLimit}`]} />
+        </tbody>
+      </table>
+    </div>
   );
 };
 export default BlockDetailsTable;
