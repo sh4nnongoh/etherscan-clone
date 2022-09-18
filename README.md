@@ -79,7 +79,6 @@ Based on the events and objects identified in the _Strategic Design_ stage, the 
 For this project, we will be relying on [Infura](https://docs.infura.io/infura/networks/ethereum/json-rpc-methods) to retrieve information from the ethereum blockchain. As an API key will be required, we will encapsulate the Infura calls within our own edge functions as follows:
 ```
 /api/v1/recent/
-/api/v1/recent/?days={number}
 /api/v1/transaction/?hash={string}
 /api/v1/block/?number={number}
 ```
@@ -95,18 +94,17 @@ The ethereum block time can be estimated to be at least 10 seconds ([source](htt
 
 Based on the information above, we can estimate that visitors to the Home page will trigger approximately 10 API requests every second.
 
-Based on the ER-diagram drawn in the _Tactical Design_ stage, the object storage size for _Block_ and _Transaction_ can be estimated to be as follows:
+Based on the needs of the project, a subset of the ```Block``` object will be stored in a database to enable efficient calculation of the ```NetworkStats``` object:
 
 * __Int__: 4 bytes
 * __Char__: 1 byte * size
-* __Block__: 66 bytes + 66 bytes + 4 bytes + 4 bytes = 140 bytes
-* __Transaction__: ( 66 bytes * 4 ) + ( 4 bytes * 2 ) = 272 bytes
+* __Block__: 66 bytes + 66 bytes + 4 bytes + 4 bytes + 4 bytes = 144 bytes
 
-Given that there can be approximately 1.5 million transactions a day ([source](https://ycharts.com/indicators/ethereum_transactions_per_day)), and approximately 10 thousand blocks produced in a day, the storage needed to store 7 days worth of objects can be calculated as follows:
+Given that there are approximately 10 thousand blocks produced in a day, the storage needed to store 7 days worth of objects can be calculated as follows:
 
-* [ ( 140 bytes * 10,000 ) + ( 272 bytes * 1,500,000 ) ] * 7 
-= 2,865,800,000 bytes
-= __~3GB__
+* ( 144 bytes * 10,000 ) * 7 
+= 1,440,000 bytes
+= __~1.44MB__
 
 ### __System Architecture__
 <img src="./doc/system-architecture.png" alt="system-architecture" width="400"/>
