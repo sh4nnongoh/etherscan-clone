@@ -11,11 +11,11 @@ const BlockDetails: FC<{block: BlockTransactionString | null}> = ({ block }) => 
   return (
     <div className="m-10">
       <h1>Block</h1>
-      <div className="inline-flex border-b border-gray-200 dark:border-gray-700">
+      <div className="inline-flex border-b border-gray-200">
         <button
           type="button"
           // eslint-disable-next-line max-len
-          className="h-10 px-4 py-2 -mb-px text-sm text-center text-blue-600 bg-transparent border-b-2 border-blue-500 sm:text-base dark:border-blue-400 dark:text-blue-300 whitespace-nowrap focus:outline-none"
+          className="h-10 px-4 py-2 -mb-px text-sm text-center text-blue-600 bg-transparent border-b-2 border-blue-500 sm:text-base  whitespace-nowrap focus:outline-none"
         >
           Overview
         </button>
