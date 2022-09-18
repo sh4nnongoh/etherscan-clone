@@ -1,8 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import Home from "../views/Home";
 import { RecentData } from "./api/v1/recent";
-const Home: NextPage<RecentData> = () => (
+const App: NextPage<RecentData> = ({
+  blocks,
+  transactions,
+  dailyTransactionCount,
+  weeklyNetworkThroughput,
+  weeklyAverageLatency
+}) => (
   <div className={styles.container}>
     <Head>
       <title>Etherscan Clone - Search & View Recent Transactions</title>
@@ -13,11 +20,13 @@ const Home: NextPage<RecentData> = () => (
       />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main className={styles.main}>
-      <h1 className={styles.title}>
-        Work In Progress
-      </h1>
-    </main>
+    <Home
+      blocks={blocks}
+      transactions={transactions}
+      dailyTransactionCount={dailyTransactionCount}
+      weeklyNetworkThroughput={weeklyNetworkThroughput}
+      weeklyAverageLatency={weeklyAverageLatency}
+    />
   </div>
 );
 export const getStaticProps = async () => {
@@ -28,4 +37,4 @@ export const getStaticProps = async () => {
     revalidate: 10
   };
 };
-export default Home;
+export default App;
