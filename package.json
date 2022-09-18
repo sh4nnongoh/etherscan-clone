@@ -1,6 +1,6 @@
 {
   "name": "etherscan-clone",
-  "version": "0.1.1663504652143",
+  "version": "0.1.1663505564006",
   "private": true,
   "scripts": {
     "dev": "next dev",

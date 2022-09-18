@@ -1,0 +1,12 @@
+name: 1-minute-cron
+on:
+  schedule:
+    - cron: "*/1 * * * *"
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Build and Deploy Release Branch
+        run: |
+          curl -X POST -G ${{ secrets.APP_URL }}/api/admin/update-db-by-batch -d 'adminSecret=${{ secrets.ADMIN_SECRET }}&size=5'

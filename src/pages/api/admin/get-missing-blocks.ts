@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
-import getDaysAgoTimestampInSeconds from "../../../utils/getDaysAgoTimestampInSeconds";
 const prisma = new PrismaClient();
 type Error = {
   error: unknown
