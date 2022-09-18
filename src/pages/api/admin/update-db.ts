@@ -15,7 +15,7 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<unknown | Error>
 ): Promise<boolean> {
-  const { adminSecret } = req.query;
+  const { adminSecret, sinceBlockNumber } = req.query;
   if (req.method !== "POST" || adminSecret !== process.env.ADMIN_SECRET) {
     res.status(500).json({ error: "error" });
     return Promise.resolve(false);
@@ -30,7 +30,7 @@ export default function handler(
         throw Error("Unable to find latest block in database.");
       }
       const { number } = result;
-      return getBlocksTillLatest(web3, number + 1);
+      return getBlocksTillLatest(web3, Number(sinceBlockNumber) || number + 1);
     })
     .then((blocks) => setBlocksInDb(prisma, blocks))
     .then(() => getDbBlockCount(prisma))
