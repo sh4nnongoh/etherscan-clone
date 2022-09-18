@@ -3,9 +3,9 @@ import { FC } from "react";
 import type { BlockTransactionString } from "web3-eth";
 import BlockDetailsTable from "../components/BlockDetailsTable";
 import useBlockDetails from "../hooks/useBlockDetails";
-const BlockDetails: FC<{block: BlockTransactionString}> = ({ block }) => {
+const BlockDetails: FC<{block: BlockTransactionString | null}> = ({ block }) => {
   const router = useRouter();
-  const blockNumber = block.number || Number(router.query.blockNumber);
+  const blockNumber = block?.number || Number(router.query.blockNumber);
   const blockDetails = useBlockDetails({ blockNumber });
   return (
     <div>

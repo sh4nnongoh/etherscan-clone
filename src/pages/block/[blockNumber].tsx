@@ -13,7 +13,7 @@ const BlockDetailsPage: NextPage = () => (
       />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <BlockDetails block={{}} />
+    <BlockDetails block={null} />
   </div>
 );
 export default BlockDetailsPage;
