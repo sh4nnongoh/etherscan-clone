@@ -86,7 +86,7 @@ The endpoinds are derived from the needs of the personas identified in the _Stra
 ### __Capacity Estimation__
 | Ethereum Block Time   | Traffic Estimation                | Requests Estimation   | 7-days Storage
 | ---                   | ---                               | ---                   | --
-| __~10 seconds__       | __~1M DAU__ or __~10 users/sec__  | __~10 requests/sec__  | __~3GB__
+| __~10 seconds__       | __~1M DAU__ or __~10 users/sec__  | __~10 requests/sec__  | __~1.44MB__
 
 By referencing the number of daily active address, along with the fact that there are passer-by visiting the site, we can assume 1 million daily active users ([source](https://ycharts.com/indicators/ethereum_daily_active_addresses)). 
 
