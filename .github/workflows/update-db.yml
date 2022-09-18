@@ -7,6 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
     steps:
-      - name: Build and Deploy Release Branch
+      - name: Update DB for Etherscan-Clone Project
         run: |
           curl -X POST -G ${{ secrets.APP_URL }}/api/admin/update-db-by-batch -d 'adminSecret=${{ secrets.ADMIN_SECRET }}&size=5'
