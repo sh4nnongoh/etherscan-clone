@@ -30,7 +30,7 @@ const App: NextPage<RecentData> = ({
   </div>
 );
 export const getStaticProps = async () => {
-  const result = await fetch(`${process.env.PRODUCTION_URL}/api/v1/recent`);
+  const result = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/v1/recent`);
   const recentData = await result.json();
   return {
     props: recentData,

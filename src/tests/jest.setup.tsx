@@ -5,6 +5,13 @@ jest.mock("next/head", () => ({
   __esModule: true,
   default: ({ children }: { children: ReactNode[] }) => children
 }));
+jest.mock("next/router", () => ({
+  __esModule: true,
+  useRouter: () => ({
+    query: {}
+  }),
+  default: ({ children }: { children: ReactNode[] }) => children
+}));
 jest.mock("../components/Chart", () => ({
   __esModule: true,
   default: () => <div>chart rendered</div>
