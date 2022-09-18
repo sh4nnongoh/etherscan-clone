@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "../pages";
 import getMetaContent from "../utils/getMetaContent";
 import { defaultEthBlock, defaultEthTransaction } from "./constants";
@@ -9,7 +9,7 @@ When user navigates to the web page,
 Then user sees the static information
 `;
 describe(userStory, () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     render(<App
       blocks={[
         {
@@ -29,6 +29,7 @@ describe(userStory, () => {
       weeklyAverageLatency={123}
       weeklyNetworkThroughput={321}
     />);
+    await waitFor(() => expect(screen.queryByText("chart rendered")).toBeInTheDocument());
   });
   it("shows the correct headers", () => {
     const titleCollection = document.getElementsByTagName("title");
