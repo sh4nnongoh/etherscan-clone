@@ -1,3 +1,5 @@
 build
 node_modules
 bootstrap-next-typescript
+.env
+./next-env.d.ts
