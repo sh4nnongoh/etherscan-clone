@@ -1,0 +1,12 @@
+name: 2359-clean-db
+on:
+  schedule:
+    - cron: "59 23 * * *"
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Clean DB for Etherscan-Clone Project
+        run: |
+          curl -X POST -G ${{ secrets.APP_URL }}/api/admin/cleanup-db -d 'adminSecret=${{ secrets.ADMIN_SECRET }}'
