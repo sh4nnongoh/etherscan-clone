@@ -86,7 +86,7 @@ The endpoinds are derived from the needs of the personas identified in the _Stra
 ### __Capacity Estimation__
 | Ethereum Block Time   | Traffic Estimation                | Requests Estimation   | 7-days Storage
 | ---                   | ---                               | ---                   | --
-| __~10 seconds__       | __~1M DAU__ or __~10 users/sec__  | __~10 requests/sec__  | __~1.44MB__
+| __~10 seconds__       | __~1M DAU__ or __~10 users/sec__  | __~10 requests/sec__  | __~19.32MB__
 
 By referencing the number of daily active address, along with the fact that there are passer-by visiting the site, we can assume 1 million daily active users ([source](https://ycharts.com/indicators/ethereum_daily_active_addresses)). 
 
@@ -97,14 +97,14 @@ Based on the information above, we can estimate that visitors to the Home page w
 Based on the needs of the project, a subset of the ```Block``` object will be stored in a database to enable efficient calculation of the ```NetworkStats``` object:
 
 * __Int__: 4 bytes
-* __Char__: 1 byte * size
-* __Block__: 66 bytes + 66 bytes + 4 bytes + 4 bytes + 4 bytes = 144 bytes
+* __Char__: 2 byte * size
+* __Block__: 132 bytes + 132 bytes + 4 bytes + 4 bytes + 4 bytes = 276 bytes
 
 Given that there are approximately 10 thousand blocks produced in a day, the storage needed to store 7 days worth of objects can be calculated as follows:
 
-* ( 144 bytes * 10,000 ) * 7 
-= 1,440,000 bytes
-= __~1.44MB__
+* ( 276 bytes * 10,000 ) * 7 
+= 19,320,000 bytes
+= __~19.32MB__
 
 ### __System Architecture__
 <img src="./doc/system-architecture.png" alt="system-architecture" width="400"/>
