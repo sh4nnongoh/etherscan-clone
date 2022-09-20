@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: Update DB for Etherscan-Clone Project
         run: |
-          curl -X POST -G ${{ secrets.APP_URL }}/api/admin/update-db-by-batch -d 'adminSecret=${{ secrets.ADMIN_SECRET }}&size=5'
+          curl -X POST -G ${{ secrets.APP_URL }}/api/admin/update-db-by-batch -d 'adminSecret=${{ secrets.ADMIN_SECRET }}&size=2'
