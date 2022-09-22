@@ -5,7 +5,9 @@ const DynamicChart = dynamic(() => import("./Chart"), {
 });
 const EthereumTransactionHistory: FC<{dailyTransactionCount: number[]}> = ({ dailyTransactionCount }) => (
   <div className="h-50 px-5">
-    ETHEREUM TRANSACTION HISTORY IN 7 DAYS
+    <span className="font-bold">
+      ETHEREUM TRANSACTION HISTORY IN 7 DAYS
+    </span>
     <DynamicChart dailyTransactionCount={dailyTransactionCount.reverse()} />
   </div>
 );
