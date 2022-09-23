@@ -1,10 +1,10 @@
 import type { Transaction } from "web3-eth";
 import { FC } from "react";
 import LatestTableRow from "./LatestTableRow";
-const LatestTransactionsTable: FC<{transactions: Transaction[]}> = ({ transactions }) => (
+const LatestTransactionsTable: FC<{transactions: Partial<Transaction>[]}> = ({ transactions }) => (
   <table className="table-fixed w-full">
     <tbody>
-      {transactions.map(({ hash, from, to }) => (
+      {transactions.map(({ hash = "", from, to }) => (
         <LatestTableRow
           key={hash}
           row={[

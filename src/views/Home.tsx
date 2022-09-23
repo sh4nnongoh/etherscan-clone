@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Card from "../components/Card";
 import EthereumTransactionHistory from "../components/EthereumTransactionHistory";
 import LatestBlocksTable from "../components/LatestBlocksTable";
@@ -7,17 +7,13 @@ import Search from "../components/Search";
 import Stats from "../components/Stats";
 import { RecentData } from "../pages/api/v1/recent";
 const Home: FC<RecentData> = (props) => {
-  const [prerenderedProps, setPrerenderedProps] = useState(props || {});
   const {
     blocks = [],
     transactions = [],
     dailyTransactionCount = [],
     weeklyNetworkThroughput,
     weeklyAverageLatency
-  } = prerenderedProps;
-  useEffect(() => {
-    setPrerenderedProps(props);
-  }, [props]);
+  } = props;
   return (
     <>
       <div className="flex flex-col items-center mt-10">

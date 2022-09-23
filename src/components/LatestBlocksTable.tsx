@@ -1,11 +1,11 @@
 import type { BlockTransactionString } from "web3-eth";
 import { FC } from "react";
 import LatestTableRow from "./LatestTableRow";
-const LatestBlocksTable: FC<{blocks: BlockTransactionString[]}> = ({ blocks }) => (
+const LatestBlocksTable: FC<{blocks: Partial<BlockTransactionString>[]}> = ({ blocks }) => (
   <table className="table-fixed w-full border">
     <tbody>
       {blocks.map((block) => {
-        const { number, transactions } = block;
+        const { number, transactions = [] } = block;
         return (
           <LatestTableRow
             key={number}

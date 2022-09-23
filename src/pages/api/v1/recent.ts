@@ -13,8 +13,8 @@ const web3Provider = new Web3.providers.HttpProvider(provider);
 const web3 = new Web3(web3Provider);
 const prisma = new PrismaClient();
 export type RecentData = {
-  blocks: BlockTransactionString[]
-  transactions: Transaction[]
+  blocks: Partial<BlockTransactionString>[]
+  transactions: Partial<Transaction>[]
   dailyTransactionCount: number[]
   weeklyNetworkThroughput: number
   weeklyAverageLatency: number
@@ -33,8 +33,8 @@ export default async function handler(
     const transactions = await getTransactionsFromHashes(web3, getXTransactionHashesFromBlocks([], recentBlocks, 10));
     res.status(200).json({
       ...getNetworkStats(blocks),
-      blocks: recentBlocks,
-      transactions
+      blocks: recentBlocks.map(({ number, transactions: tx }) => ({ number, transactions: tx })),
+      transactions: transactions.map(({ hash, from, to }) => ({ hash, from, to }))
     });
   } catch (error) {
     res.status(500).json({ error });
