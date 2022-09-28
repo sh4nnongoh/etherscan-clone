@@ -19,8 +19,8 @@ const Home: FC<RecentData> = (props) => {
       <div className="flex flex-col items-center mt-10">
         <Search />
       </div>
-      <div className="grid md:grid-cols-10">
-        <div className="col-start-2 col-span-8">
+      <div className="grid sm:grid-cols-1 lg:grid-cols-10">
+        <div className="lg:col-start-3 lg:col-span-6">
           <Card>
             <div className="flex flex-col divide-y justify-evenly">
               <Stats title="TRANSACTIONS PER SEC" subtitle={`${weeklyNetworkThroughput} TPS`} />
