@@ -1,7 +1,9 @@
 # Etherscan-Clone
 This is an example project to demonstrate the use of modern web techniques with Web3.
 
-View the application live [here](https://sh4nnongoh-etherscan-clone.vercel.app/).
+~~View the application live [here](https://sh4nnongoh-etherscan-clone.vercel.app/).~~
+
+This project is no longer maintained, however, the System Design concepts still apply.
 
 The business requirements are as follows:
 * ability to search for a specific transaction hash or block number
